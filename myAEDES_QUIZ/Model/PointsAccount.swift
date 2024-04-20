@@ -17,11 +17,14 @@ class PointsAccount {
         case ended
     }
     
+    // MARK: - Storage
+    @ObservationIgnored @AppStorage("appRecord") private var appRecord: Int = 0
+    
     // MARK: - Var
     var totalPoints: Int = 0
-    private var appRecord: Int = 0
     var currentQuestion: Int = 1
     var quizStatus: QuizStatus = .preStart
+    var answerColor: Color = AppColor.white.color
     
     
     // MARK: - Flow funcs
@@ -36,24 +39,37 @@ class PointsAccount {
     func startNewQuiz() {
         totalPoints = 0
         currentQuestion = 1
+        answerColor = AppColor.white.color
         quizStatus = .started
     }
     
     func nextQuestion() {
         if currentQuestion == Question.capitalsOfEurope.count {
             if totalPoints > appRecord {
-                appRecord = totalPoints
+                saveAppRecord(newRecord: totalPoints)
                 endQuiz()
             }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-                    self.currentQuestion += 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.answerColor = AppColor.white.color
+                self.currentQuestion += 1
             }
         }
     }
     
     func endQuiz() {
-        quizStatus = .ended
-        print("Quiz Ended")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.quizStatus = .ended
+        }
+    }
+    
+    func actionForRightAnswer() {
+        answerColor = .green
+        totalPoints += Question.capitalsOfEurope[currentQuestion - 1].points
+        nextQuestion()
+    }
+    
+    func actionForErrorAnswer() {
+        answerColor = .red
     }
 }

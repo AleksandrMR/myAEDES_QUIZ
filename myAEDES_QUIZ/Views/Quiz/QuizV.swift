@@ -11,7 +11,6 @@ import SwiftUI
 struct QuizV: View {
     
     // MARK: - Var
-    @State var btnColor: Color = .white
     @State var showAlertRightAnswer: Bool = false
     @Environment(PointsAccount.self) private var pointsAccount
     
@@ -48,21 +47,18 @@ extension QuizV {
                 .font(.title)
         }
         .padding()
-        .background(AppColor.white.color)
+        .background(pointsAccount.answerColor)
     }
     
     @ViewBuilder var responseSection: some View {
         VStack {
             ForEach(Question.capitalsOfEurope[pointsAccount.currentQuestion - 1].answers, id: \.self) { item in
-                Button2(title: item, bgColor: btnColor) {
+                Button2(title: item) {
                     if item == Question.capitalsOfEurope[pointsAccount.currentQuestion - 1].rightAnswer {
-                        pointsAccount.totalPoints += Question.capitalsOfEurope[pointsAccount.currentQuestion - 1].points
-                        print(pointsAccount.totalPoints)
-                        print(pointsAccount.currentQuestion)
-                        pointsAccount.nextQuestion()
+                        pointsAccount.actionForRightAnswer()
                     } else {
+                        pointsAccount.actionForErrorAnswer()
                         showAlertRightAnswer = true
-                        print(pointsAccount.currentQuestion)
                     }
                 }
                 .padding(.vertical, 4)
