@@ -35,6 +35,7 @@ class PointsAccount {
     
     func startNewQuiz() {
         totalPoints = 0
+        currentQuestion = 1
         quizStatus = .started
     }
     
