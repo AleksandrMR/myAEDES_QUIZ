@@ -11,7 +11,7 @@ struct Button2: View {
     
     // MARK: - Var
     var title: String
-    var bgColor: Color
+//    var bgColor: Color
     var action: () -> ()
     
     // MARK: - Body
@@ -22,12 +22,12 @@ struct Button2: View {
             Text(title)
         }
         .buttonStyle(.button2)
-        .background(bgColor)
+        .background(.white)
         .cornerRadius(9)
     }
 }
 
 // MARK: - Preview
 #Preview {
-    Button2(title: AppStrings.MainMenu.btnTitle, bgColor: AppColor.white.color) { }
+    Button2(title: AppStrings.MainMenu.btnTitle) { }
 }

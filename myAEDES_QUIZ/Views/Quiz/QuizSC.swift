@@ -31,7 +31,7 @@ struct QuizSC: View {
 extension QuizSC {
     @ViewBuilder var question: some View {
         QuizV()
-            .environment(PointsAccount())
+            .environment(pointsAccount)
     }
 }
 
