@@ -9,9 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // MARK: - Var
+    @State private var pointsAccount = PointsAccount()
+    
     // MARK: - Body
     var body: some View {
-        MainMenu()
+        ZStack {
+            switch pointsAccount.quizStatus {
+            case .preStart:
+                MainMenu()
+                    .environment(pointsAccount)
+            case .started:
+                QuizSC()
+                    .environment(pointsAccount)
+            case .ended:
+                MainMenu()
+                    .environment(pointsAccount)
+            }
+        }
     }
 }
 

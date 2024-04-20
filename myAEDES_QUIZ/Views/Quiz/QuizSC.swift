@@ -7,20 +7,36 @@
 
 import SwiftUI
 
+
 struct QuizSC: View {
+    
+    // MARK: - Var
+    @Environment(PointsAccount.self) private var pointsAccount
     
     // MARK: - Body
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            QuizHeader()
+                .environment(pointsAccount)
+            ZStack {
+                question
+            }
+        }
+        .background(AppColor.blue245FA5.color)
     }
 }
 
 // MARK: - Extension
 extension QuizSC {
-    
+    @ViewBuilder var question: some View {
+        QuizV()
+            .environment(PointsAccount())
+    }
 }
 
 // MARK: - Preview
 #Preview {
     QuizSC()
+        .environment(PointsAccount())
 }

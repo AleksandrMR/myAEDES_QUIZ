@@ -8,9 +8,9 @@
 import Foundation
 
 
-struct Questions: Identifiable, Equatable {
+struct Question: Identifiable, Equatable {
     let id = UUID()
-    let score: Int
+    let points: Int
     let imageURL: URL
     let title: String
     let answers: [String]
@@ -19,40 +19,40 @@ struct Questions: Identifiable, Equatable {
 
 
 // MARK: - Extensions
-extension Questions {
-    static var capitalsOfEurope: [Questions] {
+extension Question {
+    static var capitalsOfEurope: [Question] {
         [
-            Questions(
-                score: 100,
-                imageURL: URL(string: "https://en.wikipedia.org/wiki/Rome#/media/File:Rome_skyline_panorama.jpg")!,
+            Question(
+                points: 100,
+                imageURL: URL(string: "https://media.timeout.com/images/105211701/750/422/image.jpg")!,
                 title: "Choose the capital of Italy?",
                 answers: ["Warsaw", "Rome", "Berlin", "Madrid"],
                 rightAnswer: "Rome"
             ),
-            Questions(
-                score: 100,
-                imageURL: URL(string: "https://en.wikipedia.org/wiki/Madrid#/media/File:Madrid_-_Sky_Bar_360º_(Hotel_Riu_Plaza_España),_vistas_19.jpg")!,
+            Question(
+                points: 100,
+                imageURL: URL(string: "https://hips.hearstapps.com/hmg-prod/images/madrid-city-landscape-with-gran-via-street-spain-royalty-free-image-1683640284.jpg?crop=1.00xw:0.751xh;0,0.240xh&resize=1200:*")!,
                 title: "Choose the capital of Spain?",
                 answers: ["Lisbona", "Rome", "Madrid", "Berlin"],
                 rightAnswer: "Madrid"
             ),
-            Questions(
-                score: 100,
-                imageURL: URL(string: "https://en.wikipedia.org/wiki/Berlin#/media/File:Museumsinsel_Berlin_Juli_2021_1_(cropped).jpg")!,
+            Question(
+                points: 100,
+                imageURL: URL(string: "https://www.berlin.de/binaries/asset/image_assets/7927302/ratio_2_1/1708697002/1500x750/")!,
                 title: "Choose the capital of Germany?",
                 answers: ["Warsaw", "Rome", "Berlin", "Madrid"],
                 rightAnswer: "Berlin"
             ),
-            Questions(
-                score: 100,
-                imageURL: URL(string: "https://en.wikipedia.org/wiki/Lisbon#/media/File:Lisbon_(36831596786)_(cropped).jpg")!,
+            Question(
+                points: 100,
+                imageURL: URL(string: "https://www.nauticareport.it/resizer/picscache/720x420c50/8c1051c87db2625cb2d98895254567b7.jpg")!,
                 title: "Choose the capital of Portugal?",
                 answers: ["Rome", "Berlin", "Madrid", "Lisbona"],
                 rightAnswer: "Lisbona"
             ),
-            Questions(
-                score: 100,
-                imageURL: URL(string: "https://en.wikipedia.org/wiki/Warsaw#/media/File:Aleja_Niepdleglosci_Warsaw_2022_aerial_(cropped).jpg")!,
+            Question(
+                points: 100,
+                imageURL: URL(string: "https://static2-viaggi.corriereobjects.it/wp-content/uploads/2015/06/01varsavia.jpg?v=1434224186")!,
                 title: "Choose the capital of Poland?",
                 answers: ["Rome", "Warsaw", "Berlin", "Madrid"],
                 rightAnswer: "Warsaw"
